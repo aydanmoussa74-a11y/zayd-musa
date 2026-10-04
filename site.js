@@ -4,7 +4,7 @@
   if (reduce) return;
 
   var lightX = 50;
-  var lightY = 28;
+  var lightY = 30;
 
   function paintLight() {
     root.style.setProperty("--lx", lightX + "%");
@@ -18,10 +18,15 @@
   }
 
   window.addEventListener("pointermove", onPoint, { passive: true });
+  window.addEventListener("pointerdown", onPoint, { passive: true });
 
   function onScroll() {
-    var shift = Math.min(window.scrollY * 0.12, 80);
-    root.style.setProperty("--shift", shift + "px");
+    var y = window.scrollY;
+    var height = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+    var progress = Math.min(y / height, 1);
+    root.style.setProperty("--shift", (y * 0.18) + "px");
+    root.style.setProperty("--lift", (progress * -72) + "px");
+    root.style.setProperty("--sheet", (progress * -24) + "px");
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
