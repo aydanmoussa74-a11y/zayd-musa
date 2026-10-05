@@ -235,7 +235,17 @@ h1 {
   text-underline-offset: 0.18em;
 }
 
-.band { margin-top: var(--space-8); }
+.principles {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+}
+
+.principles li {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--line);
+}
 
 .tools {
   display: flex;
